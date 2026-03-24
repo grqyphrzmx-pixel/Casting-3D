@@ -37,7 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy,numpy,trimesh,opencv-python,pillow,scipy,scikit-image,imageio,networkx,tifffile,lazy_loader
+requirements = python3,kivy==2.2.0,numpy,trimesh,opencv-python,pillow,scipy,scikit-image,imageio,networkx,tifffile,lazy_loader
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -139,7 +139,7 @@ android.ndk = 25b
 # agreements. This is intended for automation only. If set to False,
 # the default, you will be shown the license when first running
 # buildozer.
-# android.accept_sdk_license = False
+android.accept_sdk_license = True
 
 # (str) Android entry point, default is ok for Kivy-based app
 #android.entrypoint = org.kivy.android.PythonActivity
@@ -286,7 +286,7 @@ android.ndk = 25b
 
 # (list) The Android archs to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
 # In past, was `android.arch` as we weren't supporting builds for multiple archs at the same time.
-android.arch = arm64-v8a
+android.archs = arm64-v8a,armeabi-v7a
 
 # (int) overrides automatic versionCode computation (used in build.gradle)
 # this is not the same as app version and should only be edited if you know what you're doing
