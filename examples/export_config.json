@@ -1,0 +1,12 @@
+{
+  "default_format": "stl_binary",
+  "default_unit": "millimeter",
+  "default_precision": 0.0001,
+  "default_tolerance": 0.01,
+  "stl_ascii": false,
+  "step_schema": "AP214",
+  "iges_unit": 2,
+  "write_colors": true,
+  "auto_fix_mesh": true,
+  "validate_before_export": true
+}

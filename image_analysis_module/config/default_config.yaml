@@ -1,0 +1,248 @@
+# 铸造行业2D到3D转换 - 图像分析模块默认配置
+# 
+# 本配置文件定义了图像分析模块的所有可配置参数。
+# 用户可以通过修改此文件或提供自定义配置来覆盖默认设置。
+
+version: "1.0"
+
+# =============================================================================
+# 预处理配置
+# =============================================================================
+preprocessing:
+  # 去噪方法: gaussian, median, bilateral, none
+  denoise_method: "gaussian"
+  
+  # 高斯滤波参数 (denoise_method = gaussian)
+  gaussian_sigma: 1.5
+  
+  # 中值滤波参数 (denoise_method = median)
+  median_kernel_size: 5
+  
+  # 双边滤波参数 (denoise_method = bilateral)
+  bilateral_d: 9
+  bilateral_sigma_color: 75.0
+  bilateral_sigma_space: 75.0
+  
+  # 对比度增强方法: clahe, gamma, none
+  contrast_method: "clahe"
+  
+  # CLAHE参数 (contrast_method = clahe)
+  clahe_clip_limit: 2.0
+  clahe_grid_size: 8
+  
+  # 伽马校正参数 (contrast_method = gamma)
+  gamma_value: 1.0
+  
+  # 二值化方法: otsu, adaptive, manual
+  binarization_method: "otsu"
+  
+  # 自适应阈值参数 (binarization_method = adaptive)
+  adaptive_block_size: 11
+  adaptive_c: 2.0
+  
+  # 手动阈值参数 (binarization_method = manual)
+  manual_threshold: 127
+  
+  # 形态学操作
+  morphology_enabled: true
+  morphology_operations:
+    - type: "open"        # 开运算: open, close, erode, dilate
+      kernel_size: 3
+    - type: "close"
+      kernel_size: 3
+
+# =============================================================================
+# 边缘检测配置
+# =============================================================================
+edge_detection:
+  # 检测方法: canny, sobel, laplacian
+  method: "canny"
+  
+  # Canny边缘检测参数 (method = canny)
+  canny_low_threshold: 50
+  canny_high_threshold: 150
+  canny_aperture_size: 3
+  canny_l2_gradient: false
+  
+  # Sobel参数 (method = sobel)
+  sobel_kernel_size: 3
+  
+  # Laplacian参数 (method = laplacian)
+  laplacian_kernel_size: 3
+
+# =============================================================================
+# 轮廓分析配置
+# =============================================================================
+contour:
+  # 轮廓检索模式: external, list, tree, ccomp
+  retrieval_mode: "tree"
+  
+  # 近似方法: none, simple, tc89_l1, tc89_kcos
+  approximation_method: "simple"
+  
+  # 面积筛选 (像素)
+  min_area: 100.0
+  max_area_ratio: 0.95  # 相对于图像面积的最大比例
+  
+  # 周长筛选 (像素)
+  min_perimeter: 50.0
+  
+  # 顶点数筛选
+  min_vertices: 3
+  
+  # 多边形近似参数
+  polygon_epsilon_factor: 0.01  # epsilon = factor * perimeter
+
+# =============================================================================
+# 特征提取配置
+# =============================================================================
+feature:
+  # 最小置信度阈值 (0-1)
+  min_confidence: 0.7
+  
+  # 直线角度容差 (度)
+  line_angle_tolerance: 5.0
+  
+  # 圆度阈值 (0-1)
+  circle_circularity_threshold: 0.85
+  
+  # 圆弧最小角度跨度 (度)
+  arc_min_angle_span: 15.0
+  
+  # 圆弧最大角度跨度 (度)
+  arc_max_angle_span: 350.0
+  
+  # 多边形角度容差 (度)
+  polygon_angle_tolerance: 10.0
+  
+  # 启用的识别器
+  enabled_recognizers:
+    - "line"
+    - "circle"
+    - "arc"
+    - "ellipse"
+    - "polygon"
+
+# =============================================================================
+# 尺寸提取配置
+# =============================================================================
+dimension:
+  # OCR启用
+  ocr_enabled: true
+  
+  # 最小文字高度 (像素)
+  min_text_height: 10
+  
+  # 文字识别置信度阈值
+  text_confidence_threshold: 0.6
+  
+  # 尺寸线延伸长度 (像素)
+  dimension_line_extension: 10.0
+  
+  # 箭头检测启用
+  arrow_detection_enabled: true
+
+# =============================================================================
+# 调试和日志配置
+# =============================================================================
+debug:
+  # 调试模式
+  enabled: false
+  
+  # 可视化中间结果
+  visualize_intermediate: false
+  
+  # 保存中间图像
+  save_intermediate: false
+  
+  # 中间结果保存路径
+  intermediate_path: "./debug_output"
+
+logging:
+  # 日志级别: DEBUG, INFO, WARNING, ERROR
+  level: "INFO"
+  
+  # 日志文件
+  file: "image_analysis.log"
+  
+  # 控制台输出
+  console_output: true
+  
+  # 文件输出
+  file_output: true
+
+# =============================================================================
+# 性能配置
+# =============================================================================
+performance:
+  # 多线程处理
+  multithreading: true
+  
+  # 最大线程数 (0表示使用CPU核心数)
+  max_threads: 0
+  
+  # GPU加速
+  gpu_acceleration: false
+  
+  # 图像金字塔层数
+  pyramid_levels: 1
+  
+  # 最大图像尺寸 (超过则缩放)
+  max_image_size: 4096
+
+# =============================================================================
+# 输出配置
+# =============================================================================
+output:
+  # 默认输出格式: json, step, iges, stl
+  default_format: "json"
+  
+  # 包含原始轮廓数据
+  include_contours: true
+  
+  # 包含处理参数
+  include_parameters: true
+  
+  # 坐标精度 (小数位数)
+  coordinate_precision: 3
+  
+  # 尺寸单位
+  unit: "mm"
+
+# =============================================================================
+# 源类型特定配置
+# =============================================================================
+source_type:
+  # 技术图纸配置
+  technical_drawing:
+    preprocessing:
+      denoise_method: "gaussian"
+      gaussian_sigma: 1.0
+      binarization_method: "otsu"
+    edge_detection:
+      method: "canny"
+      canny_low_threshold: 30
+      canny_high_threshold: 100
+  
+  # 照片配置
+  photo:
+    preprocessing:
+      denoise_method: "bilateral"
+      contrast_method: "clahe"
+      binarization_method: "adaptive"
+    edge_detection:
+      method: "canny"
+      canny_low_threshold: 80
+      canny_high_threshold: 200
+  
+  # 手绘草图配置
+  sketch:
+    preprocessing:
+      denoise_method: "median"
+      median_kernel_size: 5
+      contrast_method: "clahe"
+      binarization_method: "adaptive"
+    edge_detection:
+      method: "canny"
+      canny_low_threshold: 40
+      canny_high_threshold: 120

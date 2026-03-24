@@ -1,0 +1,78 @@
+{
+  "version": "1.0.0",
+  "image_analysis": {
+    "denoise_method": "gaussian",
+    "gaussian_sigma": 1.5,
+    "median_kernel_size": 5,
+    "contrast_method": "clahe",
+    "clahe_clip_limit": 2.0,
+    "clahe_grid_size": 8,
+    "binarization_method": "otsu",
+    "morphology_enabled": true,
+    "edge_method": "canny",
+    "canny_low_threshold": 50,
+    "canny_high_threshold": 150,
+    "canny_aperture_size": 3,
+    "min_contour_area": 100.0,
+    "min_contour_perimeter": 50.0,
+    "polygon_epsilon_factor": 0.01,
+    "circle_circularity_threshold": 0.85,
+    "line_angle_tolerance": 5.0,
+    "min_confidence": 0.7
+  },
+  "modeling": {
+    "default_extrusion_depth": 10.0,
+    "default_draft_angle": 1.5,
+    "default_fillet_radius": 2.0,
+    "linear_deflection": 0.5,
+    "angular_deflection": 0.5,
+    "auto_rebuild": true,
+    "max_history": 100,
+    "auto_apply_fillets": true,
+    "auto_apply_draft": true
+  },
+  "export": {
+    "default_format": "stl_binary",
+    "default_unit": "millimeter",
+    "stl_binary": true,
+    "stl_tolerance": 0.01,
+    "step_schema": "AP214",
+    "step_write_colors": true,
+    "iges_unit_flag": 2,
+    "iges_write_colors": true,
+    "auto_fix_mesh": true,
+    "validate_before_export": true
+  },
+  "casting": {
+    "default_process": "sand_casting",
+    "default_material": "A356",
+    "draft_angle_external": 1.5,
+    "draft_angle_internal": 2.0,
+    "draft_angle_core": 2.5,
+    "min_fillet_radius": 1.5,
+    "fillet_ratio": 0.5,
+    "min_wall_thickness": 3.0,
+    "max_thickness_ratio": 2.0,
+    "machining_allowance": 2.0,
+    "enable_quality_check": true,
+    "auto_fix_issues": false
+  },
+  "ui": {
+    "theme": "light",
+    "language": "zh_CN",
+    "window_width": 1400,
+    "window_height": 900,
+    "window_maximized": false,
+    "show_grid": true,
+    "show_axes": true,
+    "background_color": "#f0f0f0",
+    "recent_files_max": 10,
+    "recent_files": []
+  },
+  "logging": {
+    "level": "INFO",
+    "max_file_size": 10485760,
+    "backup_count": 5,
+    "console_output": true
+  }
+}

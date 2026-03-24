@@ -1,0 +1,19 @@
+# Include documentation
+include README.md
+include LICENSE
+include requirements.txt
+
+# Include configuration files
+recursive-include config *.json
+
+# Include resources
+recursive-include resources *.png *.ico *.qss *.svg
+
+# Include plugins
+recursive-include plugins *.py
+
+# Exclude compiled files
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude __pycache__
+global-exclude .git*

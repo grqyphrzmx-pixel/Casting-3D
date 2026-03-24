@@ -1,0 +1,11 @@
+kivy
+numpy
+trimesh
+opencv-python
+pillow
+scipy
+scikit-image
+imageio
+networkx
+tifffile
+lazy_loader

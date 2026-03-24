@@ -1,0 +1,23 @@
+# 铸造3D建模引擎依赖
+
+# 核心依赖
+numpy>=1.20.0
+
+# OpenCASCADE Python绑定
+# 安装方法（选择其一）:
+# 1. conda: conda install -c conda-forge pythonocc-core=7.7.0
+# 2. pip: pip install pythonocc-core (可能需要预编译的OCC库)
+pythonocc-core>=7.6.0
+
+# 可选依赖（用于高级功能）
+# scipy>=1.7.0  # 科学计算
+# matplotlib>=3.4.0  # 可视化
+# PyQt5>=5.15.0  # GUI支持
+# vtk>=9.0.0  # 3D可视化
+
+# 开发依赖
+# pytest>=6.2.0  # 测试
+# pytest-cov>=2.12.0  # 测试覆盖率
+# black>=21.0  # 代码格式化
+# flake8>=3.9.0  # 代码检查
+# mypy>=0.910  # 类型检查
